@@ -1,0 +1,322 @@
+[
+  {
+    "text": "Présentation académique sur les innovations technologiques à l'université ce soir",
+    "label": 1
+  },
+  {
+    "text": "Analysis of recent economic data shows steady growth in the manufacturing sector",
+    "label": 1
+  },
+  {
+    "text": "BREAKING: Scientists reveal they have been lying to us for decades about everything",
+    "label": 0
+  },
+  {
+    "text": "Le Parlement européen a adopté la nouvelle directive sur la protection des données",
+    "label": 1
+  },
+  {
+    "text": "BOMBSHELL: Anonymous insider reveals shocking truth mainstream media refuses to cover",
+    "label": 0
+  },
+  {
+    "text": "Accord international signé lors du sommet climatique de cette semaine à Genève",
+    "label": 1
+  },
+  {
+    "text": "URGENT à partager ! Votre santé est en danger, big pharma vous ment",
+    "label": 0
+  },
+  {
+    "text": "Discussion nuancée sur les enjeux économiques actuels dans le journal",
+    "label": 1
+  },
+  {
+    "text": "Le tribunal administratif a rendu sa décision concernant le recours déposé en mars",
+    "label": 1
+  },
+  {
+    "text": "BREAKING EXCLUSIVE: Presidential candidate caught on hidden camera admitting election fraud plot",
+    "label": 0
+  },
+  {
+    "text": "Ce remède naturel interdit par Big Pharma guérit le cancer en 3 jours",
+    "label": 0
+  },
+  {
+    "text": "Tech company releases quarterly earnings report showing modest revenue growth",
+    "label": 1
+  },
+  {
+    "text": "L'Agence spatiale européenne confirme le lancement réussi du satellite Copernicus",
+    "label": 1
+  },
+  {
+    "text": "URGENT SHARE: New variant 100x more deadly being hidden by WHO and governments",
+    "label": 0
+  },
+  {
+    "text": "Débat constructif sur les politiques publiques à la radio ce matin",
+    "label": 1
+  },
+  {
+    "text": "Researchers present findings at annual data science conference held in Boston today",
+    "label": 1
+  },
+  {
+    "text": "Massive cover-up exposed! The elite don't want you to see this viral video",
+    "label": 0
+  },
+  {
+    "text": "Les chercheurs de l'INSERM publient leurs travaux sur les cellules souches",
+    "label": 1
+  },
+  {
+    "text": "University study on social media usage finds correlation with sleep patterns",
+    "label": 1
+  },
+  {
+    "text": "ATTENTION DANGER ! Ne mangez surtout pas ce produit, risque mortel !!!",
+    "label": 0
+  },
+  {
+    "text": "New archaeological discovery in Egypt sheds light on ancient civilization practices",
+    "label": 1
+  },
+  {
+    "text": "Nouvelle étude clinique sur l'efficacité des traitements contre la maladie d'Alzheimer",
+    "label": 1
+  },
+  {
+    "text": "INSOLITE : Un médecin qui parlait trop a mystérieusement disparu hier soir",
+    "label": 0
+  },
+  {
+    "text": "Medical professionals discuss new treatment protocols published in academic journal",
+    "label": 1
+  },
+  {
+    "text": "CHOC TOTAL : Découverte bouleversante que les scientifiques officiels veulent cacher absolument",
+    "label": 0
+  },
+  {
+    "text": "They are hiding the truth about what really happened that night, share this!!!",
+    "label": 0
+  },
+  {
+    "text": "Étude scientifique publiée dans Nature sur la biodiversité marine",
+    "label": 1
+  },
+  {
+    "text": "Rapport officiel des autorités sanitaires disponible sur le site gouvernemental",
+    "label": 1
+  },
+  {
+    "text": "WARNING: New law will allow government to enter your home without warrant, share now",
+    "label": 0
+  },
+  {
+    "text": "Official report released by health authorities on vaccination coverage rates this year",
+    "label": 1
+  },
+  {
+    "text": "EXPOSED: Billionaires funding secret population control program revealed in leaked memo",
+    "label": 0
+  },
+  {
+    "text": "SCANDALE étouffé par les médias mainstream, la preuve en vidéo exclusive",
+    "label": 0
+  },
+  {
+    "text": "University researchers explore new approaches to renewable energy storage solutions",
+    "label": 1
+  },
+  {
+    "text": "RÉVÉLATION CHOC : Un complot mondial découvert par un scientifique courageux",
+    "label": 0
+  },
+  {
+    "text": "ALERTE ROUGE : L'eau du robinet contient un produit qui rend stérile, prouvé !",
+    "label": 0
+  },
+  {
+    "text": "BANNED VIDEO: Professor fired for revealing what they really put in processed food",
+    "label": 0
+  },
+  {
+    "text": "The media won't show you this! Share before it gets deleted forever!!!",
+    "label": 0
+  },
+  {
+    "text": "Intéressant article sur les avancées récentes en intelligence artificielle",
+    "label": 1
+  },
+  {
+    "text": "URGENT: This banned treatment cures everything, doctors don't want you to know!",
+    "label": 0
+  },
+  {
+    "text": "INCROYABLE mais vrai ! Personne n'en parle dans les journaux mainstream",
+    "label": 0
+  },
+  {
+    "text": "COMPLOT révélé : Les élites manipulent la population depuis 50 ans",
+    "label": 0
+  },
+  {
+    "text": "The new study published in Nature explores marine ecosystem dynamics and climate",
+    "label": 1
+  },
+  {
+    "text": "Supreme Court issues ruling on landmark case involving digital privacy rights",
+    "label": 1
+  },
+  {
+    "text": "EXPLOSION imminente de la bulle financière, sauvez votre argent maintenant",
+    "label": 0
+  },
+  {
+    "text": "La Banque centrale européenne maintient ses taux d'intérêt inchangés ce trimestre",
+    "label": 1
+  },
+  {
+    "text": "SHOCKING: Government officials caught lying about this major incident cover up",
+    "label": 0
+  },
+  {
+    "text": "Government releases official statistics on employment figures for the third quarter",
+    "label": 1
+  },
+  {
+    "text": "Selon les dernières statistiques, l'inflation a légèrement reculé en novembre",
+    "label": 1
+  },
+  {
+    "text": "Les vaccins contiennent des nanoparticules de contrôle mental, scientifiques anonymes révèlent tout",
+    "label": 0
+  },
+  {
+    "text": "Analyse approfondie des données statistiques de l'INSEE publiée ce trimestre",
+    "label": 1
+  },
+  {
+    "text": "URGENT !!! Le gouvernement cache la vérité sur ce scandale incroyable !",
+    "label": 0
+  },
+  {
+    "text": "Les résultats du baccalauréat 2024 montrent un taux de réussite de 91,5%",
+    "label": 1
+  },
+  {
+    "text": "NASA confirms successful deployment of James Webb telescope observation mission",
+    "label": 1
+  },
+  {
+    "text": "REVELATION: COVID was engineered in lab to depopulate, whistleblower proves it finally",
+    "label": 0
+  },
+  {
+    "text": "World Health Organization updates guidelines for infectious disease prevention protocols",
+    "label": 1
+  },
+  {
+    "text": "Scientists detect gravitational waves from distant black hole merger event",
+    "label": 1
+  },
+  {
+    "text": "WARN EVERYONE: This food is secretly poisoning millions right now as you read",
+    "label": 0
+  },
+  {
+    "text": "TRUTH: The moon landing was faked, new evidence surfaces in declassified files",
+    "label": 0
+  },
+  {
+    "text": "Conférence passionnante sur l'histoire de l'architecture gothique hier soir",
+    "label": 1
+  },
+  {
+    "text": "Le nouveau rapport du GIEC met en lumière l'urgence de la crise climatique",
+    "label": 1
+  },
+  {
+    "text": "Les résultats de l'enquête montrent une tendance intéressante dans les données",
+    "label": 1
+  },
+  {
+    "text": "SCANDALE : Le 5G détruit votre ADN, les preuves que l'OMS dissimule",
+    "label": 0
+  },
+  {
+    "text": "Local authorities report infrastructure improvements following city council approval",
+    "label": 1
+  },
+  {
+    "text": "The European Parliament voted on new regulations for artificial intelligence oversight",
+    "label": 1
+  },
+  {
+    "text": "Scientists publish peer-reviewed research on climate adaptation strategies in journals",
+    "label": 1
+  },
+  {
+    "text": "Deep state exposed! Watch this video before the globalists take it down!!!",
+    "label": 0
+  },
+  {
+    "text": "They deleted this 3 times already! Share immediately before it disappears forever",
+    "label": 0
+  },
+  {
+    "text": "International climate summit concludes with agreement on carbon emission reduction targets",
+    "label": 1
+  },
+  {
+    "text": "Central bank publishes monetary policy report highlighting economic stability indicators",
+    "label": 1
+  },
+  {
+    "text": "ALERTE IMMÉDIATE : Partagez vite avant que ce message soit censuré !",
+    "label": 0
+  },
+  {
+    "text": "Le musée du Louvre annonce une nouvelle exposition temporaire pour le printemps 2025",
+    "label": 1
+  },
+  {
+    "text": "CENSURÉ partout ! La vidéo que les géants du web veulent supprimer définitivement",
+    "label": 0
+  },
+  {
+    "text": "Federal Reserve decision on interest rates was announced following committee meeting",
+    "label": 1
+  },
+  {
+    "text": "Partagez avant suppression ! Le gouvernement ment sur les chiffres du chômage réel",
+    "label": 0
+  },
+  {
+    "text": "VÉRITÉ CACHÉE : Les chemtrails répandent des produits chimiques toxiques sur nos têtes",
+    "label": 0
+  },
+  {
+    "text": "EXCLUSIVE: Secret documents leaked proving global conspiracy against the population",
+    "label": 0
+  },
+  {
+    "text": "MUST SHARE: The real reason they don't want you to know about this cure",
+    "label": 0
+  },
+  {
+    "text": "ALERT: Drinking tap water causes brain damage according to suppressed Harvard study",
+    "label": 0
+  },
+  {
+    "text": "BREAKING NEWS: La vérité que les médias ne veulent pas vous dire !",
+    "label": 0
+  },
+  {
+    "text": "EXCLUSIF : L'élite mondialiste prépare une puce implantable obligatoire pour 2025",
+    "label": 0
+  }
+]

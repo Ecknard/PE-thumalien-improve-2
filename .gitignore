@@ -1,0 +1,64 @@
+# ============================================================
+# Thumalien — .gitignore
+# ============================================================
+
+# --- Secrets (CRITIQUE : ne jamais committer) ---
+.env
+*.env.local
+*.pem
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.python-version
+
+# --- Tests & couverture ---
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# --- Données (volumineuses ou sensibles) ---
+data/raw/*.json
+data/processed/*.json
+logs/*.log
+logs/*.csv
+
+# --- Modèles ML (trop lourds pour git) ---
+models/fake_news_classifier/
+models/baseline_classifier.pkl
+data/models/
+
+# --- Notebooks checkpoints ---
+.ipynb_checkpoints/
+
+# --- Ruff / linters ---
+.ruff_cache/
+
+# --- macOS ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Docker ---
+*.pid
+
+# --- NLTK data (volumineuse) ---
+nltk_data/

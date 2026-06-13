@@ -1,0 +1,33 @@
+[project]
+name = "thumalien"
+version = "1.1.0"
+description = "Détection de Fake News sur Bluesky — SUP DE VINCI 2025/2026"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "E501",  # line too long (géré par formatter)
+    "B008",  # function calls in defaults
+    "F401",  # unused imports (toléré dans __init__.py)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]

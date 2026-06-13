@@ -1,0 +1,201 @@
+version: "3.9"
+
+# ============================================================
+# Thumalien — Docker Compose
+# Services : postgres | dashboard | pipeline (profil optionnel)
+# Usage :
+#   docker compose up -d                  → postgres + dashboard
+#   docker compose --profile pipeline up  → + pipeline one-shot
+#   docker compose --profile dev up       → + hot-reload src
+# ============================================================
+
+services:
+
+  # ----------------------------------------------------------
+  # BASE DE DONNÉES POSTGRESQL
+  # ----------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: thumalien_postgres
+    restart: unless-stopped
+    env_file:
+      - .env                                   # ← best practice master
+    environment:
+      POSTGRES_DB: ${DB_NAME:-thumalien_db}
+      POSTGRES_USER: ${DB_USER:-thumalien_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/01_extensions.sql
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/02_schema.sql  # ← SQL pur (master)
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-thumalien_user} -d ${DB_NAME:-thumalien_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ----------------------------------------------------------
+  # DASHBOARD STREAMLIT
+  # ----------------------------------------------------------
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: thumalien_dashboard
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-thumalien_db}
+      DB_USER: ${DB_USER:-thumalien_user}
+      DB_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      DB_PORT: 5432
+      POSTGRES_HOST: postgres                  # alias compatibilité master
+      POSTGRES_DB: ${DB_NAME:-thumalien_db}
+      POSTGRES_USER: ${DB_USER:-thumalien_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      BLUESKY_HANDLE: ${BLUESKY_HANDLE}
+      BLUESKY_APP_PASSWORD: ${BLUESKY_APP_PASSWORD}
+      PYTHONPATH: /app
+    ports:
+      - "${STREAMLIT_SERVER_PORT:-8501}:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    command: streamlit run dashboard/Home.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true
+
+  # ----------------------------------------------------------
+  # DEV : hot-reload (montage src en live)
+  # ----------------------------------------------------------
+  dashboard-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: thumalien_dashboard_dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-thumalien_db}
+      DB_USER: ${DB_USER:-thumalien_user}
+      DB_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      DB_PORT: 5432
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${DB_NAME:-thumalien_db}
+      POSTGRES_USER: ${DB_USER:-thumalien_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      BLUESKY_HANDLE: ${BLUESKY_HANDLE}
+      BLUESKY_APP_PASSWORD: ${BLUESKY_APP_PASSWORD}
+      PYTHONPATH: /app
+    ports:
+      - "8502:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./src:/app/src                         # ← hot-reload src (master)
+      - ./dashboard:/app/dashboard             # ← hot-reload dashboard
+    profiles:
+      - dev
+    command: streamlit run dashboard/Home.py --server.port=8501 --server.address=0.0.0.0
+
+  # ----------------------------------------------------------
+  # PIPELINE (collecte + analyse, one-shot)
+  # ----------------------------------------------------------
+  pipeline:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: thumalien_pipeline
+    restart: "no"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-thumalien_db}
+      DB_USER: ${DB_USER:-thumalien_user}
+      DB_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      DB_PORT: 5432
+      POSTGRES_HOST: postgres
+      BLUESKY_HANDLE: ${BLUESKY_HANDLE}
+      BLUESKY_APP_PASSWORD: ${BLUESKY_APP_PASSWORD}
+      PYTHONPATH: /app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    profiles:
+      - pipeline
+    command: python -m src.pipeline --limit 25
+
+  # ----------------------------------------------------------
+  # LABELER : détection fake news en temps réel (Firehose)
+  # Labels affichés sous les posts dans bsky.app
+  # Prérequis : avoir exécuté setup_labeler_account.py d'abord
+  # ----------------------------------------------------------
+  labeler:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: thumalien_labeler
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      BLUESKY_HANDLE: ${BLUESKY_HANDLE}
+      BLUESKY_APP_PASSWORD: ${BLUESKY_APP_PASSWORD}
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-thumalien_db}
+      DB_USER: ${DB_USER:-thumalien_user}
+      DB_PASSWORD: ${DB_PASSWORD:-thumalien_password}
+      DB_PORT: 5432
+      PYTHONPATH: /app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    profiles:
+      - labeler
+    command: python -m src.labeler.labeler_service
+
+  # LABELER DRY-RUN (test sans émettre de vrais labels)
+  labeler-dry:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: thumalien_labeler_dry
+    restart: "no"
+    env_file:
+      - .env
+    environment:
+      BLUESKY_HANDLE: ${BLUESKY_HANDLE}
+      BLUESKY_APP_PASSWORD: ${BLUESKY_APP_PASSWORD}
+      PYTHONPATH: /app
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    profiles:
+      - labeler-dry
+    command: python -m src.labeler.labeler_service --dry-run
+
+volumes:
+  postgres_data:
