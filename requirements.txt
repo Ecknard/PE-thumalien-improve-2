@@ -17,6 +17,9 @@ fr_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/fr
 scikit-learn>=1.4.0
 transformers>=4.40.0
 sentence-transformers>=3.0.0
+# torch est installé en version CPU-only AVANT ce fichier (voir docker/Dockerfile).
+# Cette ligne ne fait que vérifier la contrainte de version, elle ne doit pas
+# déclencher une réinstallation de torch avec CUDA.
 torch>=2.2.0
 
 # --- Fine-tuning (master) ---
