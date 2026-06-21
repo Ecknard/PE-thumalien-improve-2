@@ -1,5 +1,3 @@
-version: "3.9"
-
 # ============================================================
 # Thumalien — Docker Compose
 # Services : postgres | dashboard | pipeline (profil optionnel)
