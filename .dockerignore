@@ -1,0 +1,46 @@
+# ============================================================
+# Thumalien — .dockerignore
+# Exclut du contexte de build tout ce qui n'est pas nécessaire
+# à l'exécution du conteneur (allège et accélère le build).
+# ============================================================
+
+# --- Git ---
+.git
+.gitignore
+
+# --- Environnements virtuels / cache Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Secrets (jamais dans l'image) ---
+.env
+*.env.local
+*.pem
+*.key
+
+# --- Données et artefacts montés en volume au runtime ---
+# (inutile de les copier dans l'image, ils sont mountés via docker-compose)
+data/
+models/
+logs/
+
+# --- Non nécessaire dans le conteneur ---
+notebooks/
+docs/
+tests/
+.github/
+.pre-commit-config.yaml
+README.md
+Makefile
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
